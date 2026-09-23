@@ -156,12 +156,19 @@ git push origin master
 echo -e "\n4. Поиск, фильтрация и обработка данных"
 
 ls -lRp | grep -v "^$" | grep -Ev "/|total|\.:" | sort -k 5 -r | head -n 5
+echo
 grep -hriE 'смен|лёва' | grep -v 'отчёт' | sort | head -n 6
+echo
 grep -lr 'смен' claude_monet/kitchen/morning_shift/ claude_monet/kitchen/evening_shift/morning_backup/ | wc -l
+echo
 tail -n 2 `find claude_monet/kitchen/morning_shift/ claude_monet/kitchen/evening_shift/ -type f | grep -E ".+_tasks"` | grep -iE "лёва|смен" | sort -r
+echo
 cat claude_monet/kitchen/morning_report | grep -Ev 'Сеня|Федя' | sort -r | head -n 4 | wc -w
+echo
 ls -lR | grep " 2 " | sort -k 8
+echo
 ls -lR | grep "\->" | grep -v "shift" | sort -rk 8
+echo
 
 git status
 git add .
